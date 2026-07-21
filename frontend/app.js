@@ -18,7 +18,7 @@
 
   // ---------- Config ----------
   // Point this at your deployed backend, e.g. "https://my-api.onrender.com"
-  const API_BASE_URL = window.API_BASE_URL || "https://ai-chat-assistant-9c9i.onrender.com";
+  const API_BASE_URL = "https://ai-chat-assistant-9c9i.onrender.com";
   const MAX_CHARS = 4000;
 
   // ---------- State ----------
