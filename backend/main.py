@@ -30,15 +30,24 @@ settings = get_settings()
 app = FastAPI(title="AI Chat Assistant API", version="1.0.0")
 
 # --- Dynamic CORS Setup ---
-origins = settings.allowed_origins_list
+allowed_origins = settings.allowed_origins_list
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins if origins else ["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+if "*" in allowed_origins or not allowed_origins:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=False,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+else:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=allowed_origins,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
 
 # ---------- Schemas ----------

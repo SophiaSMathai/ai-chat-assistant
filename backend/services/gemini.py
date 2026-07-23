@@ -72,15 +72,17 @@ class GeminiServiceError(Exception):
 
 def _get_or_create_chat(session_id: str) -> ChatSession:
     if session_id not in _sessions:
+        # Sanitize model string (e.g. 'Gemini 3.1 Flash-Lite' -> 'gemini-3.1-flash-lite')
+        model_name = settings.GEMINI_MODEL.strip().lower().replace(" ", "-")
         chat = client.chats.create(
-            model=settings.GEMINI_MODEL,
+            model=model_name,
             config=genai_types.GenerateContentConfig(
                 system_instruction=SYSTEM_INSTRUCTION,
                 temperature=0.8,
             ),
         )
         _sessions[session_id] = ChatSession(chat=chat)
-        logger.info("Created new chat session: %s", session_id)
+        logger.info("Created new chat session: %s with model: %s", session_id, model_name)
     return _sessions[session_id]
 
 
