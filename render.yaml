@@ -10,6 +10,6 @@ services:
       - key: GEMINI_API_KEY
         sync: false
       - key: GEMINI_MODEL
-        value: "Gemini 3.1 Flash-Lite"
+        value: "gemini-3.1-flash-lite"
       - key: ALLOWED_ORIGINS
         value: "*"

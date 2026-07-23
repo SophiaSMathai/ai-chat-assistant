@@ -16,7 +16,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     # --- Gemini API ---
     GEMINI_API_KEY: str
-    GEMINI_MODEL: str = "Gemini 3.1 Flash-Lite"
+    GEMINI_MODEL: str = "gemini-3.1-flash-lite"
 
     # --- App / CORS ---
     # Comma-separated list of allowed frontend origins, e.g.
