@@ -17,8 +17,8 @@
   "use strict";
 
   // ---------- Config ----------
-  // Point this at your deployed backend, e.g. "https://my-api.onrender.com"
-  const API_BASE_URL = "https://ai-chat-assistant-9c9i.onrender.com";
+  // Point this at your deployed backend URL on Render, e.g. "https://ai-chat-assistant-backend.onrender.com"
+  const API_BASE_URL = (window.NOVA_API_BASE_URL || "https://ai-chat-assistant-9c9i.onrender.com").replace(/\/$/, "");
   const MAX_CHARS = 4000;
 
   // ---------- State ----------

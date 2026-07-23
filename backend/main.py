@@ -24,16 +24,12 @@ settings = get_settings()
 
 app = FastAPI(title="AI Chat Assistant API", version="1.0.0")
 
-# --- Fixed CORS Block ---
-# Hardcoding your local frontend origins explicitly so the browser allows the requests
-origins = [
-    "http://localhost:5500",
-    "http://127.0.0.1:5500",
-]
+# --- Dynamic CORS Setup ---
+origins = settings.allowed_origins_list
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=origins if origins else ["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
