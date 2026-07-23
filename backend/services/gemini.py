@@ -19,8 +19,13 @@ if this ever needs to run with >1 worker.
 from __future__ import annotations
 
 import logging
+import sys
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Dict
+
+# Ensure backend folder is in sys.path so config imports cleanly
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from google import genai
 from google.genai import errors as genai_errors

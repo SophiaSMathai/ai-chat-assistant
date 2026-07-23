@@ -7,12 +7,17 @@ FastAPI application entrypoint.
 from __future__ import annotations
 
 import logging
+import sys
 import uuid
+from pathlib import Path
 
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
+
+# Ensure backend folder is in sys.path so config and services import cleanly
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from config import get_settings
 from services.gemini import GeminiServiceError, clear_session, send_message
