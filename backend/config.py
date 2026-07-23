@@ -21,7 +21,7 @@ class Settings(BaseSettings):
     # --- App / CORS ---
     # Comma-separated list of allowed frontend origins, e.g.
     # "http://localhost:5500,https://my-frontend.onrender.com"
-    ALLOWED_ORIGINS: str = "http://localhost:5500,http://127.0.0.1:5500"
+    ALLOWED_ORIGINS: str = "*"
 
     # --- Chat behavior ---
     MAX_HISTORY_MESSAGES: int = 40  # safety cap on in-memory session length
